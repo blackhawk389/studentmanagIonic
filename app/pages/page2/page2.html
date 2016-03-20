@@ -1,0 +1,41 @@
+<ion-navbar *navbar>
+  <ion-title>
+    Enter Record Here
+  </ion-title>
+</ion-navbar>
+    
+<ion-content>
+    
+    
+    <form [ngFormModel] = 'form'  (ngSubmit) = 'onSubmit(form.value)'>
+  <ion-list>
+ 
+      <ion-item>
+        <ion-label floating>Student Name</ion-label>
+        <ion-input [ngFormControl] = 'name' (ngModel) = 'name' type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Father Name</ion-label>
+        <ion-input [ngFormControl] = 'fname' (ngModel) = 'fname' type="text"></ion-input>
+      </ion-item>
+
+       <ion-item>
+        <ion-label floating>Class</ion-label>
+        <ion-input [ngFormControl] = 'class' (ngModel) = 'class' type="text"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [ngFormControl] = 'email' (ngModel) = 'email' type="text" ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label floating>Phone Number</ion-label>
+        <ion-input [ngFormControl] = 'pnumber' (ngModel) = 'pnumber' type="text"></ion-input>
+      </ion-item>
+      
+    </ion-list>
+    <button block type="submit">Create Record</button>
+    </form>
+</ion-content>
