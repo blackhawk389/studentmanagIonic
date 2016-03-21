@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams, Platform} from 'ionic-angular';
+import {Page, NavController, NavParams, Platform, Storage, LocalStorage} from 'ionic-angular';
 import {FORM_DIRECTIVES, FormBuilder, Validators, Control, ControlGroup,AbstractControl} from 'angular2/common';
 import { HomePage } from '../home/home';
 
@@ -20,14 +20,11 @@ export class SecPage {
     email: AbstractControl;
     pnumber: AbstractControl;
     
-    
-    
-    
+   local : Storage;
     
     constructor(public navigation : NavController, public fb: FormBuilder){
-        
-        
-       
+           
+        this.local = new Storage(LocalStorage);
         this.arr = [];
         this.navigation = navigation;
         
@@ -55,13 +52,10 @@ export class SecPage {
     
     onSubmit(value : any){
         console.log(value);
-        this.navigation.push(HomePage, {arrayOf : value, istrue : true});
-        
-        
-        
-        //redirect to main page with card of student at the main page
+       //this.navigation.push(HomePage, {arrayOf : value});
+        this.local.set('obj', value);
+        this.navigation.pop();
+              //redirect to main page with card of student at the main page
     }
-    
-    
-    
+   
 }

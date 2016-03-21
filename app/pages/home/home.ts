@@ -1,4 +1,4 @@
-import {Page, NavController, NavParams, Platform} from 'ionic-angular';
+import {Page, NavController, NavParams, Platform, Storage, LocalStorage} from 'ionic-angular';
 import { SecPage } from '../page2/page2';
 
 @Page({
@@ -10,19 +10,21 @@ export class HomePage {
     record : any;
     information : any;
     
-    isfalse : boolean = false;
+    local : Storage;
     
     constructor(public nav : NavController, public navparams : NavParams, public platform: Platform){
         
+        this.local = new Storage(LocalStorage);
         this.array = [];
         this.nav = nav;
         this.navparams = navparams;
         this.platform = platform;
         //comming is object of object
-        this.record = navparams.get("arrayOf");
+        //this.record = navparams.get("arrayOf");
         //this.information =  JSON.stringify(this.record);
+        this.information= this.local.get('obj')
         
-        this.array.push(this.record);
+        this.array.push(this.information);
         console.log(this.array)
        
        // this.displayInformation();
@@ -33,10 +35,4 @@ export class HomePage {
     gotopage(){
         this.nav.push(SecPage);
     }
-    
-    // displayInformation(){
-    //     // var local = JSON.stringify(this.record);
-    //     // console.log(local)
-    //     this.array.push(this.dinfor)
-    // }
 }
